@@ -4,26 +4,45 @@ class Pessoa:
         self.nome=nome
         self.idade=idade
         self.peso=peso
-        self.andando = False
-        self.falando = False
-        self.comendo = False
-        self.dormindo = False
-
+        self.acao = None
     def falar(self):
-        self.falando = True
+        if self.acao is None:
+            self.acao = 'falando'
+            print(f'{self.nome} está falando.')
+        else:
+            print(f'{self.nome} já está {self.acao}. Ele não pode fazer outra coisa agora.')
 
-        print(f'{self.nome} foi falar.')
-        if self.falando == True and self.dormindo == False and ea
-
-    def pararfalar(self):
-        print(f'{self.nome} parou de falar.')
     def comer(self):
-        print(f'{self.nome} foi comer.')
-        self.comendo = True
+        if self.acao is None:
+            self.acao = 'comendo'
+            print(f'{self.nome} está comendo.')
+        else:
+            print(f'{self.nome} já está {self.acao}. Ele não pode fazer outra coisa agora.')
+
     def dormir(self):
-        print(f'{self.nome} foi dormir.')
-        self.dormindo = True
+        if self.acao is None:
+            self.acao = 'dormindo'
+            print(f'{self.nome} está dormindo.')
+        else:
+            print(f'{self.nome} já está {self.acao}.Ele não pode fazer outra coisa agora.')
+
     def andar(self):
-        print(f'{self.nome} foi andar')
-        self.andando = True
+        if self.acao is None:
+            self.acao = 'andando'
+            print(f'{self.nome} está andando.')
+        else:
+            print(f'{self.nome} já está {self.acao}. Ele não pode fazer outra coisa agora.')
+
+    def fim(self):
+        if self.acao is not None:
+            infinitivo = {
+                'comendo': 'comer',
+                'andando': 'andar',
+                'dormindo': 'dormir',
+                'falando': 'falar'
+            }
+            print(f'{self.nome} terminou de {infinitivo[self.acao]}.')
+            self.acao = None
+        else:
+            print(f'{self.nome} não está fazendo nada no momento.')
 
